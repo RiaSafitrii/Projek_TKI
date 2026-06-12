@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>{{ book.title }}</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+</head>
+
+<body class="bg-gray-100">
+
+<div class="max-w-5xl mx-auto py-10 px-4">
+
+    <a
+        href="/"
+        class="text-blue-600 font-semibold"
+    >
+        ← Kembali ke Beranda
+    </a>
+
+    {% if book %}
+
+    <div
+        class="
+        bg-white
+        shadow-xl
+        rounded-xl
+        p-8
+        mt-4
+        "
+    >
+
+        <h1
+            class="
+            text-4xl
+            font-bold
+            text-gray-800
+            "
+        >
+            {{ book.title }}
+        </h1>
+
+        <div class="mt-6 space-y-2">
+
+            <p>
+                <strong>Book ID:</strong>
+                {{ book.bookId }}
+            </p>
+
+            <p>
+                <strong>Penulis:</strong>
+                {{ book.author }}
+            </p>
+
+            <p>
+                <strong>Genre:</strong>
+                {{ book.genres }}
+            </p>
+
+            <p>
+                <strong>Rating:</strong>
+                ⭐ {{ book.rating }}
+            </p>
+
+        </div>
+
+        <hr class="my-6">
+
+        <h2
+            class="
+            text-2xl
+            font-bold
+            mb-4
+            "
+        >
+            Deskripsi Buku
+        </h2>
+
+        <p
+            class="
+            text-gray-700
+            leading-relaxed
+            "
+        >
+            {{ book.description }}
+        </p>
+
+    </div>
+
+    {% else %}
+
+    <div
+        class="
+        bg-white
+        rounded-xl
+        shadow-lg
+        p-8
+        mt-6
+        text-center
+        "
+    >
+
+        <h1 class="text-3xl font-bold text-red-500">
+            Buku Tidak Ditemukan
+        </h1>
+
+        <p class="mt-3 text-gray-600">
+            Data buku tidak ditemukan pada dataset.
+        </p>
+
+    </div>
+
+    {% endif %}
+
+</div>
+<footer class="bg-blue-600 text-white mt-16">
+    <div class="max-w-7xl mx-auto py-6 text-center">
+
+        <p class="font-semibold">
+            BookFinder - Sistem Temu Kembali Informasi Buku
+        </p>
+
+        <p class="text-sm mt-2">
+            UAS Temu Kembali Informasi | Universitas Lampung
+        </p>
+
+    </div>
+</footer>
+</body>
+</html>

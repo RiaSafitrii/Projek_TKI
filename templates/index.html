@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>BookFinder</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+</head>
+
+<body class="bg-gray-100">
+
+    <!-- Navbar -->
+    <nav class="bg-blue-600 shadow-lg">
+
+        <div class="max-w-7xl mx-auto">
+
+            <div class="flex justify-between items-center px-6 py-4">
+
+                <h1 class="text-white text-2xl font-bold">
+                    BookFinder
+                </h1>
+
+                <div class="space-x-6">
+
+                    <a href="/"
+                       class="text-white hover:text-gray-200">
+                        Home
+                    </a>
+
+                    <a href="/about"
+                       class="text-white hover:text-gray-200">
+                        About
+                    </a>
+
+                    <a href="/dataset"
+                       class="text-white hover:text-gray-200">
+                        Dataset
+                    </a>
+
+                    <a href="/evaluation"
+                       class="text-white hover:text-gray-200">
+                        Evaluation
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </nav>
+
+    <!-- Main Content -->
+    <div class="min-h-screen flex items-center justify-center px-4">
+
+        <div
+            class="
+            bg-white
+            shadow-xl
+            rounded-xl
+            p-10
+            w-full
+            max-w-4xl
+            "
+        >
+
+            <!-- Title -->
+            <h1
+                class="
+                text-5xl
+                font-bold
+                text-center
+                text-blue-600
+                "
+            >
+                BookFinder
+            </h1>
+
+            <p
+                class="
+                text-center
+                text-gray-500
+                mt-4
+                "
+            >
+                Sistem Temu Kembali Informasi Buku
+            </p>
+
+            <!-- Search Form -->
+            <form
+                action="/search"
+                method="GET"
+                class="mt-8"
+            >
+
+                <div class="flex gap-3">
+
+                    <input
+                        type="text"
+                        name="query"
+                        placeholder="Cari judul buku, penulis, genre..."
+                        class="
+                        flex-1
+                        border
+                        rounded-lg
+                        p-4
+                        text-lg
+                        "
+                        required
+                    >
+
+                    <select
+                        name="method"
+                        class="
+                        border
+                        rounded-lg
+                        px-4
+                        "
+                    >
+
+                        <option value="tfidf">
+                            TF-IDF
+                        </option>
+
+                        <option value="bm25">
+                            BM25
+                        </option>
+
+                    </select>
+
+                    <button
+                        type="submit"
+                        class="
+                        bg-blue-600
+                        text-white
+                        px-8
+                        rounded-lg
+                        hover:bg-blue-700
+                        "
+                    >
+                        Cari
+                    </button>
+
+                </div>
+
+            </form>
+
+            <!-- Statistik -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-10">
+
+                <div class="bg-blue-50 p-6 rounded-lg text-center">
+
+                    <h3 class="font-bold text-gray-700">
+                        Jumlah Buku
+                    </h3>
+
+                    <p class="text-3xl text-blue-600 mt-2">
+                        17.380
+                    </p>
+
+                </div>
+
+                <div class="bg-green-50 p-6 rounded-lg text-center">
+
+                    <h3 class="font-bold text-gray-700">
+                        Metode
+                    </h3>
+
+                    <p class="text-xl text-green-600 mt-2">
+                        TF-IDF & BM25
+                    </p>
+
+                </div>
+
+                <div class="bg-yellow-50 p-6 rounded-lg text-center">
+
+                    <h3 class="font-bold text-gray-700">
+                        Similarity
+                    </h3>
+
+                    <p class="text-xl text-yellow-600 mt-2">
+                        Cosine Similarity
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-blue-600 text-white">
+
+        <div class="max-w-7xl mx-auto py-6 text-center">
+
+            <p class="font-semibold">
+                BookFinder - Sistem Temu Kembali Informasi Buku
+            </p>
+
+            <p class="text-sm mt-2">
+                UAS Temu Kembali Informasi | Universitas Lampung
+            </p>
+
+        </div>
+
+    </footer>
+
+</body>
+</html>

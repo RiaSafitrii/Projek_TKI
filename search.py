@@ -32,23 +32,50 @@ def search_books(query, top_k=10):
         tfidf_matrix
     ).flatten()
 
-    top_indices = similarities.argsort()[::-1][:top_k]
+    sorted_indices = similarities.argsort()[::-1]
 
     results = []
 
-    for idx in top_indices:
+    for idx in sorted_indices:
 
-        results.append({
-        "bookId": books.iloc[idx]["bookId"],
-        "title": books.iloc[idx]["title"],
-        "author": books.iloc[idx]["author"],
-        "genres": books.iloc[idx]["genres"],
-        "rating": books.iloc[idx]["avg_rating"],
-        "description": str(books.iloc[idx]["description"])[:250],
-        "score": round(float(similarities[idx]) * 100, 2)
-    })
+        # Hanya tampilkan dokumen yang relevan
+        if similarities[idx] > 0:
+
+            results.append({
+
+                "bookId":
+                books.iloc[idx]["bookId"],
+
+                "title":
+                books.iloc[idx]["title"],
+
+                "author":
+                books.iloc[idx]["author"],
+
+                "genres":
+                books.iloc[idx]["genres"],
+
+                "rating":
+                books.iloc[idx]["avg_rating"],
+
+                "description":
+                str(
+                    books.iloc[idx]["description"]
+                )[:250],
+
+                "score":
+                round(
+                    float(similarities[idx]) * 100,
+                    2
+                )
+
+            })
+
+        if len(results) >= top_k:
+            break
 
     return results
+
 
 def search_books_eval(query, top_k=10):
 
@@ -61,47 +88,28 @@ def search_books_eval(query, top_k=10):
         tfidf_matrix
     ).flatten()
 
-    top_indices = similarities.argsort()[::-1][:top_k]
+    sorted_indices = similarities.argsort()[::-1]
 
     results = []
 
-    for idx in top_indices:
+    for idx in sorted_indices:
 
-        results.append(
-            books.iloc[idx]["title"]
-        )
+        if similarities[idx] > 0:
+
+            results.append(
+                books.iloc[idx]["title"]
+            )
+
+        if len(results) >= top_k:
+            break
 
     return results
 
 
-if __name__ == "__main__":
-
-    query = input("\nMasukkan Query: ")
-
-    results = search_books(query)
-
-    print("\nHASIL PENCARIAN\n")
-
-    for i, item in enumerate(results, start=1):
-
-        print(
-            f"{i}. {item['title']}"
-        )
-        print(
-            f"   Author : {item['author']}"
-        )
-        print(
-            f"   Rating : {item['rating']}"
-        )
-        print(
-            f"   Score  : {item['score']}"
-        )
-        print()
-
 def get_book_by_id(book_id):
 
     result = books[
-    books["bookId"].astype(str) == str(book_id)
+        books["bookId"].astype(str) == str(book_id)
     ]
 
     if len(result) == 0:
@@ -117,3 +125,41 @@ def get_book_by_id(book_id):
         "description": book["description"],
         "rating": book["avg_rating"]
     }
+
+
+if __name__ == "__main__":
+
+    query = input("\nMasukkan Query: ")
+
+    results = search_books(query)
+
+    print("\nHASIL PENCARIAN\n")
+
+    if len(results) == 0:
+
+        print("Tidak ditemukan buku yang relevan.")
+
+    else:
+
+        for i, item in enumerate(
+            results,
+            start=1
+        ):
+
+            print(
+                f"{i}. {item['title']}"
+            )
+
+            print(
+                f"   Author : {item['author']}"
+            )
+
+            print(
+                f"   Rating : {item['rating']}"
+            )
+
+            print(
+                f"   Score  : {item['score']}"
+            )
+
+            print()

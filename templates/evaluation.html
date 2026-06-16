@@ -13,8 +13,9 @@
 
 </head>
 
-<body class="bg-gray-100">
+<body class="bg-gray-100 min-h-screen flex flex-col">
 
+<!-- Navbar -->
 <nav class="bg-blue-600 p-4">
 
     <div class="max-w-7xl mx-auto flex justify-between">
@@ -36,60 +37,72 @@
 
 </nav>
 
-<div class="max-w-5xl mx-auto mt-10">
+<!-- Content -->
+<main class="flex-grow">
 
-    <div class="bg-white rounded-xl shadow-lg p-8">
+    <div class="max-w-5xl mx-auto mt-10 px-4">
 
-        <h1 class="text-4xl font-bold text-blue-600 mb-8">
-            Evaluasi Sistem
-        </h1>
+        <div class="bg-white rounded-xl shadow-lg p-8">
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <h1 class="text-4xl font-bold text-blue-600 mb-8">
+                Evaluasi Sistem
+            </h1>
 
-            <div class="bg-gray-50 p-6 rounded-lg">
-                <h2 class="font-bold text-lg">
-                    Mean Precision TF-IDF
-                </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 
-                <p class="text-4xl text-green-600 mt-3">
-                    0.03
-                </p>
+                <div class="bg-gray-50 p-6 rounded-lg">
+
+                    <h2 class="font-bold text-lg">
+                        Mean Precision TF-IDF
+                    </h2>
+
+                    <p class="text-4xl text-green-600 mt-3">
+                        0.03
+                    </p>
+
+                </div>
+
+                <div class="bg-gray-50 p-6 rounded-lg">
+
+                    <h2 class="font-bold text-lg">
+                        Mean Precision BM25
+                    </h2>
+
+                    <p class="text-4xl text-blue-600 mt-3">
+                        0.04
+                    </p>
+
+                </div>
+
             </div>
 
-            <div class="bg-gray-50 p-6 rounded-lg">
-                <h2 class="font-bold text-lg">
-                    Mean Precision BM25
+            <div class="mt-8">
+
+                <h2 class="text-2xl font-bold mb-3">
+                    Penjelasan
                 </h2>
 
-                <p class="text-4xl text-blue-600 mt-3">
-                    0.04
+                <p class="text-gray-700 leading-relaxed">
+
+                    Evaluasi dilakukan menggunakan metode
+                    Precision@10 terhadap beberapa query uji.
+                    Hasil menunjukkan bahwa metode BM25
+                    menghasilkan nilai precision sedikit lebih
+                    baik dibandingkan TF-IDF pada dataset yang digunakan.
+
                 </p>
+
             </div>
-
-        </div>
-
-        <div class="mt-8">
-
-            <h2 class="text-2xl font-bold mb-3">
-                Penjelasan
-            </h2>
-
-            <p class="text-gray-700 leading-relaxed">
-
-                Evaluasi dilakukan menggunakan metode
-                Precision@10 terhadap beberapa query uji.
-                Hasil menunjukkan bahwa metode BM25
-                menghasilkan nilai precision sedikit lebih
-                baik dibandingkan TF-IDF pada dataset yang digunakan.
-
-            </p>
 
         </div>
 
     </div>
 
-</div>
+</main>
+
+<!-- Footer -->
 <footer class="bg-blue-600 text-white mt-16">
+
     <div class="max-w-7xl mx-auto py-6 text-center">
 
         <p class="font-semibold">
@@ -101,6 +114,7 @@
         </p>
 
     </div>
+
 </footer>
 
 </body>
